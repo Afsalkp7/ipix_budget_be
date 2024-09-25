@@ -4,6 +4,7 @@ import database from './database/connect.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import auth from './routes/auth.js';
+import incomeRouter from './routes/income.js'
 dotenv.config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 database();
 
 app.use('/api/auth', auth);
+app.use("/api/income", incomeRouter)
 
 
 app.get('/', (req, res) => {
