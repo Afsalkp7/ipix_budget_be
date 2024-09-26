@@ -19,7 +19,7 @@ const IncomeSchema = new Schema({
         type: String,
         trim: true,
     }
-}); // Disable _id generation for sub-documents
+});
 
 const ExpenseSchema = new Schema({
     amount: {
@@ -38,7 +38,30 @@ const ExpenseSchema = new Schema({
         type: String,
         trim: true,
     }
-}); // Disable _id generation for sub-documents
+});
+
+const PlanningSchema = new Schema({
+    type: {
+        type: String,
+        required: true,
+    },
+    category: {
+        type: String,
+        required: true,
+    },
+    amount: {
+        type: Number,
+        required: true,
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+    description: {
+        type: String,
+        trim: true,
+    }
+});
 
 const UserSchema = new Schema({
     userName: {
@@ -57,8 +80,9 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    income: [IncomeSchema],  // Array of income entries
-    expense: [ExpenseSchema]  // Array of expense entries
+    income: [IncomeSchema],
+    expense: [ExpenseSchema],
+    plan : [PlanningSchema] 
 });
 
 export default mongoose.model('User', UserSchema);
