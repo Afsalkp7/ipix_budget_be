@@ -3,7 +3,7 @@ import User from '../model/userModel.js';
 
 export const getDashData = async (req, res) => {
     try {
-        const userId = req.user; // Assuming req.user.id contains the userId
+        const userId = req.user;
         const currentDate = new Date();
         const sixMonthsAgo = new Date();
         sixMonthsAgo.setMonth(currentDate.getMonth() - 5); // Go back 5 months (to include current month)
